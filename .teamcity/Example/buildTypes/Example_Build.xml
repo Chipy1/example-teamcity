@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="021a4313-f2ed-41de-9cb3-06186795cb69" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2025.3/project-config.xsd">
+  <name>Build</name>
+  <description />
+  <settings>
+    <options>
+      <option name="artifactRules" value="target/*.jar" />
+    </options>
+    <build-runners>
+      <runner id="RUNNER_6" name="Maven deploy (master)" type="Maven2">
+        <conditions>
+          <equals name="teamcity.build.vcs.branch.Example_GitHub" value="refs/heads/master" />
+        </conditions>
+        <parameters>
+          <param name="goals" value="clean deploy -s settings.xml" />
+          <param name="localRepoScope" value="agent" />
+          <param name="maven.path" value="%teamcity.tool.maven.DEFAULT%" />
+          <param name="pomLocation" value="pom.xml" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_7" name="Maven test (other branches)" type="Maven2">
+        <conditions>
+          <does-not-equal name="teamcity.build.vcs.branch.Example_GitHub" value="refs/heads/master" />
+        </conditions>
+        <parameters>
+          <param name="goals" value="clean test" />
+          <param name="localRepoScope" value="agent" />
+          <param name="maven.path" value="%teamcity.tool.maven.DEFAULT%" />
+          <param name="pomLocation" value="pom.xml" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="Example_GitHub" />
+    </vcs-settings>
+    <build-extensions>
+      <extension id="BUILD_EXT_1" type="branches">
+        <parameters>
+          <param name="branchFilter" value="+:*" />
+        </parameters>
+      </extension>
+    </build-extensions>
+  </settings>
+</build-type>
+

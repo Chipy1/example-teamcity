@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="d600c8f3-ca4b-4f57-8cc2-0bfc92ab9936" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2025.3/project-config.xsd">
+  <name>Example</name>
+  <project-extensions>
+    <extension id="PROJECT_EXT_2" type="versionedSettings">
+      <parameters>
+        <param name="buildSettings" value="PREFER_VCS" />
+        <param name="enabled" value="true" />
+        <param name="format" value="xml" />
+        <param name="ignoreChangesInDependenciesAndVcsSettings" value="false" />
+        <param name="rootId" value="Example_GitHub" />
+        <param name="showChanges" value="false" />
+        <param name="useRelativeIds" value="true" />
+      </parameters>
+    </extension>
+  </project-extensions>
+</project>
+
